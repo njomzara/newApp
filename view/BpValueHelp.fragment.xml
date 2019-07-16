@@ -1,0 +1,24 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Dialog title="{i18n>titleBPValueHelpLabel}" contentWidth="30em" busy="{viewDefinitionModel>/busyDialog}">
+		<Panel width="auto" class="sapUiResponsiveMargin">
+			<content>
+				<Input placeholder="{i18n>partnerIDPlaceholder}" value="{bpSearchModel>/BpNumber}" submit="onBpSearchButtonPressed" type="Number"/>
+				<Input placeholder="{i18n>firstnamePlaceholder}" value="{bpSearchModel>/Firstname}" submit="onBpSearchButtonPressed"/>
+				<Input placeholder="{i18n>lastnamePlaceholder}" value="{bpSearchModel>/Lastname}" submit="onBpSearchButtonPressed"/>
+				<Input width="80%" placeholder="{i18n>streetBPValueHelpPlaceholder}" value="{bpSearchModel>/Street}" submit="onBpSearchButtonPressed"/>
+				<Input width="20%" placeholder="{i18n>houseNrPlaceholder}" value="{bpSearchModel>/HouseNumber}" submit="onBpSearchButtonPressed"/>
+				<Input width="40%" placeholder="{i18n>zipCodePlaceholder}" value="{bpSearchModel>/ZipCode}" submit="onBpSearchButtonPressed" type="Number"/>
+				<Input width="60%" placeholder="{i18n>cityBPValueHelpPlaceholder}" value="{bpSearchModel>/City}" submit="onBpSearchButtonPressed"/>
+			</content>
+		</Panel>
+		<List headerText="{i18n>resultsBPValueHelpLabel}" items="{bpSearchResultsVhModel>/results}" growing="true" growingThreshold="8" itemPress="onBpSearchSelect">
+			<StandardListItem title="{bpSearchResultsVhModel>PartnerID} - {bpSearchResultsVhModel>NameFull}"
+				description="{bpSearchResultsVhModel>Street} {bpSearchResultsVhModel>Housenumber}, {bpSearchResultsVhModel>Citycode} {bpSearchResultsVhModel>City}"
+				icon="sap-icon://person-placeholder" iconDensityAware="false" iconInset="false" type="Navigation"/>
+		</List>
+		<buttons>
+			<Button text="{i18n>closeBPValueHelpLabel}" type="Reject" press="onBpSearchCloseButtonPressed"/>
+			<Button text="{i18n>searchBPValueHelpLabel}" type="Emphasized" press="onBpSearchButtonPressed"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,28 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<ObjectHeader responsive="true" fullScreenOptimized="false" intro="{i18n>policyIDLabel} {entryViewModel>/Policennummer}"
+		title="{entryViewModel>/Bezeichnung}" number="{path: 'entryViewModel>/ProratedPrem', formatter: '.formatter.currencyFormatter'}"
+		numberUnit="{entryViewModel>/ProratedPremTT}" numberState="None" backgroundDesign="Translucent">
+		<attributes>
+			<ObjectAttribute tooltip="{policyHolderModel>/PolHldrBpTT}" text="{policyHolderModel>/PolHldrBpTT}"/>
+			<ObjectAttribute
+				text="{i18n>businessPartnerIdLabel} {path: 'policyHolderModel>/PolHldrBpID', formatter: '.formatter.numberFormatter'}, {i18n>mainMaturityLabel} {path:'entryViewModel>/MainMaturity', formatter: '.formatter.date'}"/>
+			<ObjectAttribute text="{path:'entryViewModel>/EffectiveDate', formatter: '.formatter.date'}"/>
+		</attributes>
+		<statuses>
+			<ObjectStatus text="{entryViewModel>/DunnLevel}" state="{path: 'entryViewModel>/DunnLevel', formatter: '.formatter.dunningStatusFormatter'}"/>
+		</statuses>
+		<headerContainer>
+			<IconTabBar class="sapUiResponsiveContentPadding" expanded="false" expandable="false" select="onNavigationTabsUsed">
+				<items>
+					<IconTabFilter icon="sap-icon://customer-order-entry" iconColor="Default" design="Horizontal" text="{entryViewModel>/Bezeichnung}" key="Policy"/>
+					<IconTabSeparator icon="sap-icon://open-command-field" visible="{=${viewDefinitionModel>/activityLevel} === 'Contract' }"/>
+					<IconTabFilter icon="{viewDefinitionModel>/contractIcon}" iconColor="Default" design="Horizontal"
+						text="{viewDefinitionModel>/contractText}" key="Contract" visible="{=${viewDefinitionModel>/activityLevel} === 'Contract' }"/>
+					<IconTabSeparator icon="sap-icon://open-command-field" visible="{=${viewDefinitionModel>/activityText} !== 'None' }"/>
+					<IconTabFilter icon="{viewDefinitionModel>/activityIcon}" iconColor="Default" design="Horizontal"
+						text="{viewDefinitionModel>/activityText}" key="Process" visible="{=${viewDefinitionModel>/activityText} !== 'None' }"/>
+				</items>
+			</IconTabBar>
+		</headerContainer>
+	</ObjectHeader>
+</core:FragmentDefinition>

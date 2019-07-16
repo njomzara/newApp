@@ -1,0 +1,35 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Page title="{i18n>changePaymentOptionLabel}" class="sapUiContentPadding" enableScrolling="false" showHeader="true" showNavButton="true"
+		navButtonPress="onNavButtonToPolicy">
+		<headerContent>
+			<Button text="{i18n>addBankAccountButtonLabel}" type="Emphasized" press="onAddkBankAccountButtonPressed"
+					enabled="{entryViewModel>/To_CheckDebit/Debit}" id="changePaymentOptionButton"/>
+			<Button press="onSimulateButtonPressed" text="{i18n>simulationButtonLabel}" type="Emphasized" id="ChangePaymentOptionSimulationButton"/>
+		</headerContent>
+		<MessageStrip text="{notificationModel>/msgText}" type="Warning" showIcon="true" showCloseButton="true" class="sapUiSmallMargin"
+			visible="{= ${notificationModel>/showWarning} === true}"></MessageStrip>
+		<f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12"
+			adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
+			singleContainerFullSize="false" title="{i18n>currentDataLabel}">
+			<f:content>
+				<Label text="{i18n>premPayerTTLabel}:"/>
+				<Text text="{path: 'premPayerModel>/PremPayerBpID', formatter: '.formatter.numberFormatter'}, {premPayerModel>/PremPayerTT}"/>
+			</f:content>
+		</f:SimpleForm>
+		<f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12"
+			adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
+			singleContainerFullSize="false" title="{i18n>changeDataLabel}">
+			<f:content>
+				<Label text="{i18n>directDebitLabel}"/>
+				<Switch state="{entryViewModel>/To_CheckDebit/Debit}" type="AcceptReject" id="debitSwitch" change="onDebitChange"></Switch>
+				<Label text="{i18n>bankAccountLabel}" visible="{entryViewModel>/To_CheckDebit/Debit}"/>
+				<ComboBox visible="{entryViewModel>/To_CheckDebit/Debit}" selectedKey="{entryViewModel>/To_CheckDebit/BankAccID}"
+					items="{premPayerModel>/To_BankAccount/results}" id="changePaymentOptionComboBox">
+					<items>
+						<core:Item key="{premPayerModel>BankAccountID}" text="{premPayerModel>BankAccountTT}"/>
+					</items>
+				</ComboBox>
+			</f:content>
+		</f:SimpleForm>
+	</Page>
+</core:FragmentDefinition>

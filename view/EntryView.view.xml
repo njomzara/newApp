@@ -1,0 +1,102 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns="sap.m"
+	xmlns:tnt="sap.tnt" controllerName="com.s4i.fiori.pmchangev2.controller.EntryView" xmlns:core="sap.ui.core"
+	xmlns:local="com.s4i.fiori.pmchangev2.control">
+	<SplitApp id="SplitAppDemo" initialDetail="detail" initialMaster="master" orientationChange="onOrientationChange">
+		<detailPages>
+			<Page id="detail" title="{i18n>title}" class="sapUiStdPage" busy="{viewDefinitionModel>/busy}">
+				<core:Fragment fragmentName="com.s4i.fiori.pmchangev2.view.HeaderCenter" type="XML"/>
+				<TileContainer tiles="{entryViewModel>/To_Vertrag/results}" visible="{=${viewDefinitionModel>/viewName} === 'PolicyView' }" height="60%">
+					<StandardTile title="{entryViewModel>Bezeichnung}" info="{path: 'entryViewModel>Vertragsnummer', formatter: '.formatter.numberFormatter'}"
+						icon="{path: 'entryViewModel>Bezeichnung', formatter: '.formatter.imageFormatter'}"
+						number="{path: 'entryViewModel>ProratedPrem', formatter: '.formatter.currencyFormatter'}" press="onContractTilePress"
+						tooltip="{entryViewModel>RiskInfos}"></StandardTile>
+				</TileContainer>
+				<local:ShowHideContainer visible="{=${viewDefinitionModel>/viewName} === 'ContractView' }">
+					<core:Fragment fragmentName="com.s4i.fiori.pmchangev2.view.ContractView" type="XML"/>
+				</local:ShowHideContainer>
+				<local:ShowHideContainer visible="{=${viewDefinitionModel>/viewName} === 'ChangeVariant' }">
+					<core:Fragment fragmentName="com.s4i.fiori.pmchangev2.view.ChangeVariant" type="XML"/>
+				</local:ShowHideContainer>
+				<local:ShowHideContainer visible="{=${viewDefinitionModel>/viewName} === 'ChangePaymentOption' }">
+					<core:Fragment fragmentName="com.s4i.fiori.pmchangev2.view.ChangePaymentOption" type="XML"/>
+				</local:ShowHideContainer>
+				<local:ShowHideContainer visible="{=${viewDefinitionModel>/viewName} === 'ChangePaymentFreq' }">
+					<core:Fragment fragmentName="com.s4i.fiori.pmchangev2.view.ChangePaymentFreq" type="XML"/>
+				</local:ShowHideContainer>
+				<local:ShowHideContainer visible="{=${viewDefinitionModel>/viewName} === 'AddBankAccount' }">
+					<core:Fragment fragmentName="com.s4i.fiori.pmchangev2.view.AddBankAccount" type="XML"/>
+				</local:ShowHideContainer>
+				<local:ShowHideContainer visible="{=${viewDefinitionModel>/viewName} === 'MoveAddress' }">
+					<core:Fragment fragmentName="com.s4i.fiori.pmchangev2.view.MoveAddress" type="XML"/>
+				</local:ShowHideContainer>
+				<local:ShowHideContainer visible="{=${viewDefinitionModel>/viewName} === 'MoveChangeAddress' }">
+					<core:Fragment fragmentName="com.s4i.fiori.pmchangev2.view.MoveChangeAddress" type="XML"/>
+				</local:ShowHideContainer>
+				<local:ShowHideContainer visible="{=${viewDefinitionModel>/viewName} === 'MoveRiskdata' }">
+					<core:Fragment fragmentName="com.s4i.fiori.pmchangev2.view.MoveRiskdata" type="XML"/>
+				</local:ShowHideContainer>
+				<local:ShowHideContainer visible="{=${viewDefinitionModel>/viewName} === 'MoveResults' }">
+					<core:Fragment fragmentName="com.s4i.fiori.pmchangev2.view.MoveResults" type="XML"/>
+				</local:ShowHideContainer>
+				<local:ShowHideContainer visible="{=${viewDefinitionModel>/viewName} === 'AddCoInsuredPerson' }">
+					<core:Fragment fragmentName="com.s4i.fiori.pmchangev2.view.AddCoInsuredPerson" type="XML"/>
+				</local:ShowHideContainer>
+				<local:ShowHideContainer visible="{=${viewDefinitionModel>/viewName} === 'ChangeDeductible' }">
+					<core:Fragment fragmentName="com.s4i.fiori.pmchangev2.view.ChangeDeductible" type="XML"/>
+				</local:ShowHideContainer>
+				<local:ShowHideContainer visible="{=${viewDefinitionModel>/viewName} === 'ChangeInsuranceCov' }">
+					<core:Fragment fragmentName="com.s4i.fiori.pmchangev2.view.ChangeInsuranceCov" type="XML"/>
+				</local:ShowHideContainer>
+				<local:ShowHideContainer visible="{=${viewDefinitionModel>/viewName} === 'ChangeSubjAttr' }">
+					<core:Fragment fragmentName="com.s4i.fiori.pmchangev2.view.ChangeSubjAttr" type="XML"/>
+				</local:ShowHideContainer>
+				<footer>
+					<Bar>
+						<contentRight>
+							<Button text="{i18n>exitButtonLabel}" type="Reject" press="onExitButtonPressed"/>
+							<Button text="{i18n>saveButtonLabel}" type="Emphasized" press="onSaveButtonPressed"
+								visible="{=${viewDefinitionModel>/buttonSave} === 'true' }" id="saveButton"/>
+							<Button text="{i18n>releaseButtonLabel}" enabled="{=${entryViewModel>/ApplicationID} !== '' }" type="Accept" press="onReleaseButtonPressed"
+								visible="{=${viewDefinitionModel>/buttonRelease} === 'true' }" id="releaseButton"/>
+						</contentRight>
+					</Bar>
+				</footer>
+			</Page>
+		</detailPages>
+		<masterPages>
+			<Page id="master" title="{i18n>activityListHeaderLabel}" icon="sap-icon://action" class="sapUiStdPage" busy="{viewDefinitionModel>/busy}">
+				<FlexBox alignItems="Center" justifyContent="Center" height="12em">
+					<items>
+						<Image src="{oImageModel>/path}/logo.jpg" alt="Image not available"/>
+					</items>
+				</FlexBox>
+				<tnt:NavigationList headerText="{i18n>activityListHeaderLabel}" id="navigationList" visible="false" >
+						<tnt:NavigationListItem key="001" text="Review Direct Debt" select="onActivityListItemPressed"
+						icon="sap-icon://process"/>
+						<tnt:NavigationListItem key="005" text="Payment Frequency" select="onActivityListItemPressed"
+						icon="sap-icon://process"/>
+						<tnt:NavigationListItem text="Change Policyholder"
+						icon="sap-icon://process"/>
+						<tnt:NavigationListItem text="Change Duration"
+						icon="sap-icon://process"/>
+						<tnt:NavigationListItem text="Change Premium Payer"
+						icon="sap-icon://process"/>
+						<tnt:NavigationListItem text="Change Benefit/Premium"
+						icon="sap-icon://process"/>
+						<tnt:NavigationListItem text="Perform Premium Waiver"
+						icon="sap-icon://process"/>
+						<tnt:NavigationListItem text="Change Policy Holder"
+						icon="sap-icon://process"/>
+				</tnt:NavigationList>
+				<footer>
+					<Bar busy="{viewDefinitionModel>/busy}">
+						<contentLeft>
+							<Button press="onToSapFsPmButtonPressed" icon="sap-icon://sap-logo-shape"
+								visible="{path: 'entryViewModel>/ApplicationID', formatter: '.formatter.isSystemWindowsFormatter'}"/>
+						</contentLeft>
+					</Bar>
+				</footer>
+			</Page>
+		</masterPages>
+	</SplitApp>
+</mvc:View>

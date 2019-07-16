@@ -1,0 +1,43 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Page title="{i18n>AddCoInsuredPersonLabel}" class="sapUiContentPadding" enableScrolling="false" showHeader="true" showNavButton="true"
+		navButtonPress="onNavButtonToContract" id="addCoInsuredPersonContainer">
+		<headerContent>
+			<Button press="onSimulateButtonPressed" text="{i18n>simulationButtonLabel}" type="Emphasized"/>
+		</headerContent>
+		<MessageStrip text="{notificationModel>/msgText}" type="Warning" showIcon="true" showCloseButton="true" class="sapUiSmallMargin"
+			visible="{= ${notificationModel>/showWarning} === true}"></MessageStrip>
+		<f:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12"
+			adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
+			singleContainerFullSize="false" title="{i18n>currentDataLabel}">
+			<f:content>
+				<Label text="{i18n>paymentFreqLabel}:"/>
+				<Text text="{PremiumsBackUpModel>/ProratedPremTT}"/>
+				<Label text="{i18n>proratedPremium}:"/>
+				<Text text="{path: 'PremiumsBackUpModel>/ProratedPremPolicy', formatter: '.formatter.currencyFormatter'}"/>
+			</f:content>
+		</f:SimpleForm>
+		<f:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12"
+			adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
+			singleContainerFullSize="false" title="{i18n>premDataLabel}">
+			<f:content>
+				<Label text="{i18n>proratedPremiumPoliceNewOld}:"/>
+				<Text text="{path: 'PremiumsBackUpModel>/ProratedPremPolicy', formatter: '.formatter.currencyFormatter'}"/>
+				<Text text="{path: 'entryViewModel>/ProratedPrem', formatter: '.formatter.currencyFormatter'}" visible="{=${viewDefinitionModel>/newSimulation} === 'true' }"/>
+				<Label text="{i18n>proratedPremiumContractNewOld}:"/>
+				<Text text="" id="contractPremOldAddCoInsuredPerson"/>
+				<Text text="{path: 'entryViewModel>ProratedPrem', formatter: '.formatter.currencyFormatter'}" visible="{=${viewDefinitionModel>/newSimulation} === 'true' }"/>
+			</f:content>
+		</f:SimpleForm>
+		<f:SimpleForm minWidth="1024" maxContainerCols="2" editable="true" layout="ResponsiveGridLayout" labelSpanL="4" labelSpanM="4"
+			emptySpanL="1" emptySpanM="1" columnsL="2" columnsM="2" title="{i18n>changeDataLabel}">
+			<f:content>
+				<Label text="{i18n>coInsuredPersonLabel}"/>
+				<Input value="{entryViewModel>To_CoInsuredPerson/Name}" enabled="true" editable="true" showValueHelp="true" valueHelpOnly="{entryViewModel>To_CoInsuredPerson/ValueHelpOnly}" valueHelpRequest="onOpenBPSearchDialog">
+				</Input>
+				
+				<Label text="{i18n>coInsuredPersonBpLabel}" visible="{entryViewModel>To_CoInsuredPerson/ValueHelpOnly}"/>
+				<Text text="{path: 'entryViewModel>To_CoInsuredPerson/CoInsuredBPID', formatter: '.formatter.numberFormatter'}"  visible="{entryViewModel>To_CoInsuredPerson/ValueHelpOnly}"/>
+			</f:content>
+		</f:SimpleForm>
+	</Page>
+</core:FragmentDefinition>

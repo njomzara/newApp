@@ -1,0 +1,86 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:t="sap.ui.table">
+	<Page title="{i18n>moveResultsLabel}" class="sapUiContentPadding" enableScrolling="false" showHeader="true" showNavButton="true"
+		navButtonPress="onNavButtonToRiskdata">
+		<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="100" displayValue="Beitragsvorschau" showValue="true" state="None"/>
+		<f:SimpleForm minWidth="1024" maxContainerCols="2" editable="true" layout="ResponsiveGridLayout" title="" labelSpanL="4" labelSpanM="4"
+			emptySpanL="1" emptySpanM="1" columnsL="2" columnsM="2" id="MoveResultClass">
+			<f:content>
+				<t:Table rows="{ path : '/', sorter: { path: 'contractid', descending: false }}"
+					visibleRowCount="{ path:'/', formatter: '.formatter.lengthFormatter'}" selectionMode="None" id="moveResultsTable">
+					<t:columns>
+						<t:Column width="5em">
+							<Label text="{i18n>contractIdLabel}"/>
+							<t:template>
+								<Text text="{contractid}"/>
+							</t:template>
+						</t:Column>
+						<t:Column>
+							<Label text="{i18n>contractDescriptionLabel}"/>
+							<t:template>
+								<Text text="{description}"/>
+							</t:template>
+						</t:Column>
+						<t:Column width="6em">
+							<Label text="{i18n>amountOldLabel}"/>
+							<t:template>
+								<Text text="{path:'amountold', formatter: '.formatter.currencyFormatter'}"/>
+							</t:template>
+						</t:Column>
+						<t:Column width="6em">
+							<Label text="{i18n>amountNewLabel}"/>
+							<t:template>
+								<Text text="{path:'amountnew', formatter: '.formatter.currencyFormatter'}"/>
+							</t:template>
+						</t:Column>
+						<t:Column>
+							<Label text="{i18n>tariffzoneOldLabel}"/>
+							<t:template>
+								<Text text="{tariffzoneold}"/>
+							</t:template>
+						</t:Column>
+						<t:Column>
+							<Label text="{i18n>tariffzoneNewLabel}"/>
+							<t:template>
+								<Text text="{tariffzonenew}"/>
+							</t:template>
+						</t:Column>
+					</t:columns>
+				</t:Table>
+				<!--				<Table id="moveResultsTable" items="{/}">
+					<columns>
+						<Column>
+							<Label text="Vertrag"/>
+						</Column>
+						<Column width="12em" minScreenWidth="1280px">
+							<Label text="Produkt"/>
+						</Column>
+						<Column>
+							<Label text="Beitrag alt"/>
+						</Column>
+						<Column>
+							<Label text="Beitrag neu"/>
+						</Column>
+						<Column>
+							<Label text="Tarifzone alt"/>
+						</Column>
+						<Column width="8em" minScreenWidth="1280px">
+							<Label text="Tarifzone neu"/>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem counter="0" id="__item0">
+							<cells>
+								<Text text="{contractid}" maxLines="0"/>
+								<Text text="{description}" maxLines="0"/>
+								<Text text="{amountold}" maxLines="0"/>
+								<Text text="{amountnew}" maxLines="0"/>
+								<Text text="{tariffzoneold}" maxLines="0"/>
+								<Text text="{tariffzonenew}" maxLines="0"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>-->
+			</f:content>
+		</f:SimpleForm>
+	</Page>
+</core:FragmentDefinition>

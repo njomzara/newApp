@@ -1,0 +1,85 @@
+[{
+	"activityid": "001",
+	"fragment": "ChangePaymentOption",
+	"entityPath": "To_CheckDebit",
+	"sPath": "/CheckDebitSet",
+	"backUpModel": "To_CheckDebitBackUpModel",
+	"activityLevel": "Policy"
+}, {
+	"activityid": "008",
+	"fragment": "MoveAddress",
+	"entityPath": "To_CheckAdress",
+	"sPath": "/CheckAdressSet",
+	"backUpModel": "To_CkeckAdressBackUpModel",
+	"activityLevel": "Policy"
+}, {
+	"activityid": "003",
+	"fragment": "ChangeVariant",
+	"entityPath": "To_AendereProdvar",
+	"sPath": "/AendereProdvarSet",
+	"backUpModel": "ChangeVariantBackUpModel",
+	"activityLevel": "Contract"
+}, {
+	"activityid": "005",
+	"fragment": "ChangePaymentFreq",
+	"entityPath": "To_ChangePaymentFreq",
+	"sPath": "/ChangePaymentFreqSet",
+	"backUpModel": "To_ChangePaymentFreqBackUpModel",
+	"activityLevel": "Policy"
+}, {
+	"activityid": "006",
+	"fragment": "AddCoInsuredPerson",
+	"entityPath": "To_CoInsuredPerson",
+	"sPath": "/CoInsuredPersonSet",
+	"backUpModel": "To_CoInsuredPersonBackUpModel",
+	"activityLevel": "Contract"
+}, {
+	"activityid": "007",
+	"fragment": "ChangeInsuranceCov",
+	"entityPath": "To_ChangeInsuranceCov",
+	"sPath": "/ChangeInsuranceCovSet",
+	"backUpModel": "To_ChangeInsuranceCovBackUpModel",
+	"activityLevel": "Contract"
+}, {
+	"activityid": "002",
+	"fragment": "ChangeDeductible",
+	"entityPath": "To_ChangeDeductible",
+	"sPath": "/ChangeDeductibleSet",
+	"backUpModel": "To_ChangeDeductibleBackUpModel",
+	"activityLevel": "Contract"
+}, {
+	"activityid": "009",
+	"fragment": "ChangeSubjAttr",
+	"entityPath": "To_ChangeSubjAttr",
+	"sPath": "/ChangeSubjAttrSet",
+	"backUpModel": "To_ChangeSubjAttrBackUpModel",
+	"activityLevel": "Contract"
+}, {
+	"activityid": "VH1",
+	"fragment": "AddBankAccount",
+	"entityPath": "BankAccountAttributes",
+	"sPath": "/CheckBankAccountSet",
+	"backUpModel": "BankAccountBackUpModel",
+	"activityLevel": "NI"
+}, {
+	"activityid": "VH2",
+	"fragment": "MoveChangeAddress",
+	"entityPath": "To_CheckAdress/AddressAttributes",
+	"sPath": "/CheckAdressSet",
+	"backUpModel": "To_CheckAdressBackUpModel",
+	"activityLevel": "Policy"
+}, {
+	"activityid": "VH3",
+	"fragment": "MoveRiskdata",
+	"entityPath": "To_Move",
+	"sPath": "/MoveSet",
+	"backUpModel": "RiskdataBackUpModel",
+	"activityLevel": "Policy"
+}, {
+	"activityid": "VH4",
+	"fragment": "MoveResults",
+	"entityPath": "To_Move",
+	"sPath": "/MoveSet",
+	"backUpModel": "RiskdataBackUpModel",
+	"activityLevel": "Policy"
+}]

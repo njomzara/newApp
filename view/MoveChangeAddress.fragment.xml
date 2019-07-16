@@ -1,0 +1,26 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Page title="{i18n>changeAdressLabel}" class="sapUiContentPadding" enableScrolling="false" showHeader="true" showNavButton="true"
+		navButtonPress="onNavButtonToAddress">
+		<headerContent>
+			<Button text="{i18n>checkButtonLabel}" type="Emphasized" press="onCheckAdressButtonPressed"/>
+			<Button text="{i18n>saveAddressButtonLabel}" type="Emphasized" press="onSaveAddressButtonPressed" enabled="false" id="saveAddressButton"/>
+		</headerContent>
+		<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="33" displayValue="Adresse" showValue="true" state="None"/>
+		<MessageStrip text="{notificationModel>/msgText}" type="Warning" showIcon="true" showCloseButton="true" class="sapUiSmallMargin"
+			visible="{= ${notificationModel>/showWarning} === true}"></MessageStrip>
+		<f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12"
+			adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
+			singleContainerFullSize="false" title="{i18n>adressNewLabel}">
+			<f:content>
+				<Label text="{i18n>streetLabel}"/>
+				<Input value="{policyHolderModel>/To_Address/AddressAttributes/Street}" change="onAddressFieldChange"/>
+				<Label text="{i18n>houseNumberLabel}"/>
+				<Input value="{policyHolderModel>/To_Address/AddressAttributes/HouseNumber}" change="onAddressFieldChange"/>
+				<Label text="{i18n>postalCodeLabel}"/>
+				<Input value="{policyHolderModel>/To_Address/AddressAttributes/PostalCode}" change="onAddressFieldChange"/>
+				<Label text="{i18n>cityLabel}"/>
+				<Input value="{policyHolderModel>/To_Address/AddressAttributes/City}" change="onAddressFieldChange"/>
+			</f:content>
+		</f:SimpleForm>
+	</Page>
+</core:FragmentDefinition>

@@ -1,0 +1,32 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Page title="{i18n>changePaymentFreqLabel}" class="sapUiContentPadding" enableScrolling="false" showHeader="true" showNavButton="true" navButtonPress="onNavButtonToPolicy">
+		<headerContent>
+			<Button press="onSimulateButtonPressed" text="{i18n>simulationButtonLabel}" type="Emphasized"/>
+		</headerContent>
+		<MessageStrip text="{notificationModel>/msgText}" type="Warning" showIcon="true" showCloseButton="true" class="sapUiSmallMargin"
+			visible="{= ${notificationModel>/showWarning} === true}"></MessageStrip>
+		<f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12"
+			adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
+			singleContainerFullSize="false" title="{i18n>currentDataLabel}">
+			<f:content>
+				<Label text="{i18n>paymentFreqLabel}:"/>
+				<Text text="{PremiumsBackUpModel>/ProratedPremTT}"/>
+				<Label text="{i18n>proratedPremium}:"/>
+				<Text text="{path: 'PremiumsBackUpModel>/ProratedPremPolicy', formatter: '.formatter.currencyFormatter'}"/>
+			</f:content>
+		</f:SimpleForm>
+		<f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12"
+			adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
+			singleContainerFullSize="false" title="{i18n>changeDataLabel}">
+			<f:content>
+				<Label text="{i18n>paymentFreqLabel}"/>
+				<ComboBox visible="true" selectedKey="{entryViewModel>/To_ChangePaymentFreq/PaymentFreqID}" items="{paymentFreqVhModel>/results}"
+					id="changePaymentFreqComboBox">
+					<items>
+						<core:Item key="{paymentFreqVhModel>PaymentFreqID}" text="{paymentFreqVhModel>PaymentFreqTT}"/>
+					</items>
+				</ComboBox>
+			</f:content>
+		</f:SimpleForm>
+	</Page>
+</core:FragmentDefinition>

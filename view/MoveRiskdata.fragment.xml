@@ -1,0 +1,49 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Page title="{i18n>changeRiskdataLabel}" class="sapUiContentPadding" enableScrolling="false" showHeader="true" showNavButton="true"
+		navButtonPress="onNavButtonToAddress">
+		<headerContent>
+			<Button press="onSimulateButtonPressed" text="{i18n>simulationButtonLabel}" type="Emphasized"/>
+		</headerContent>
+		<ProgressIndicator class="sapUiSmallMarginBottom" percentValue="66" displayValue="Risikodaten" showValue="true" state="None"/>
+		<MessageStrip text="{i18n>checkRiskdataLabel}" type="Information" showIcon="true" class="sapUiSmallMargin"/>
+		<MessageStrip text="{i18n>manualTarifWarningLabel}" type="Information" showIcon="true" visible="{entryViewModel>/ManualTariff}" class="sapUiSmallMargin"/>
+		<MessageStrip text="{notificationModel>/msgText}" type="Warning" showIcon="true" showCloseButton="true" class="sapUiSmallMargin"
+			visible="{= ${notificationModel>/showWarning} === true}"></MessageStrip>
+		<f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12"
+			adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1"
+			singleContainerFullSize="false">
+			<f:content>
+				<Label text="{i18n>risknumberLabel}"/>
+				<ComboBox visible="true" selectedKey="{entryViewModel>/To_Move/Declaration/Risknumber}" items="{riskNumberVhModel>/results}"
+					id="riskNumberComboBox">
+					<items>
+						<core:Item key="{riskNumberVhModel>Risknumber}" text="{riskNumberVhModel>RisknumberTT}"/>
+					</items>
+				</ComboBox>
+				<!--<Label text="{i18n>livingSpaceunknownLabel}"/>
+				<Switch state="{entryViewModel>/To_Move/Position/SpaceFG}" type="AcceptReject" id="spaceFG" change="onChangeSpaceFG"></Switch>
+				<Label text="{i18n>livingSpaceLabel}" visible="{= ${entryViewModel>/To_Move/Position/SpaceFG} === false}"/>
+				<Input value="{entryViewModel>/To_Move/Position/Livingspace}" visible="{= ${entryViewModel>/To_Move/Position/SpaceFG} === false}"/>-->
+				<Label text="{i18n>livingSpaceLabel}"/>
+				<Input value="{entryViewModel>/To_Move/Position/Livingspace}" liveChange="onLivingSpaceChanged" id="livingSpaceInput"/>
+				<Label text="{i18n>objectValueCalcLabel}"/>
+				<Text text="{path: 'entryViewModel>/To_Move/Position/ObjectValueCalc', formatter: '.formatter.beitragsFormatter'}"/>
+				<Button text="{i18n>acceptObjectValueCalcLabel}" type="Emphasized" press="onAcceptObjectValueCalcButtonPressed"/>
+				<Label text="{i18n>objectValueLabel}"/>
+				<Input value="{path: 'entryViewModel>/To_Move/Position/ObjectValue', formatter: '.formatter.beitragsFormatter'}" id="objectValueInput"/>
+				<Label text="{i18n>alarmSystemLabel}"/>
+				<ComboBox visible="true" selectedKey="{entryViewModel>/To_Move/Position/AlarmSystem}" items="{alarmSystemVhModel>/results}"
+					id="alarmSystemComboBox" change="onAlarmSystemComboBoxChange">
+					<items>
+						<core:Item key="{alarmSystemVhModel>AlarmSystem}" text="{alarmSystemVhModel>AlarmSystemTT}"/>
+					</items>
+				</ComboBox>
+				<Label text="{i18n>alarmSystemMaintenanceLabel}" visible="{= ${entryViewModel>/To_Move/Position/AlarmSystem} !== '0'}"/>
+				<Switch state="{entryViewModel>/To_Move/Position/AlarmSystemFG}" type="AcceptReject"
+					visible="{= ${entryViewModel>/To_Move/Position/AlarmSystem} !== '0'}" id="AlarmSystemFGSwitch"></Switch>
+				<Label text="{i18n>uvzLabel}"/>
+				<Switch state="{entryViewModel>/To_Move/UVZ}" type="AcceptReject"></Switch>
+			</f:content>
+		</f:SimpleForm>
+	</Page>
+</core:FragmentDefinition>

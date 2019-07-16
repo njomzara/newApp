@@ -1,0 +1,126 @@
+{
+    "resources": [
+        {
+            "name": ".user.project.json"
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "resources.json",
+            "merged": true
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": "model/formatter.js"
+        },
+        {
+            "name": "model/activityHelperModel.json"
+        },
+        {
+            "name": "i18n/i18n_de.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "i18n/i18n_en.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "view/AddBankAccount.fragment.xml"
+        },
+        {
+            "name": "view/ChangeSubjAttr.fragment.xml"
+        },
+        {
+            "name": "view/MoveRiskdata.fragment.xml"
+        },
+        {
+            "name": "view/MoveAddress.fragment.xml"
+        },
+        {
+            "name": "view/ChangePaymentOption.fragment.xml"
+        },
+        {
+            "name": "view/AddCoInsuredPerson.fragment.xml"
+        },
+        {
+            "name": "view/ChangePaymentFreq.fragment.xml"
+        },
+        {
+            "name": "view/EntryView.view.xml"
+        },
+        {
+            "name": "view/MoveResults.fragment.xml"
+        },
+        {
+            "name": "view/ChangeVariant.fragment.xml"
+        },
+        {
+            "name": "view/BpValueHelp.fragment.xml"
+        },
+        {
+            "name": "view/ChangeDeductible.fragment.xml"
+        },
+        {
+            "name": "view/ContractView.fragment.xml"
+        },
+        {
+            "name": "view/MoveChangeAddress.fragment.xml"
+        },
+        {
+            "name": "view/HeaderCenter.fragment.xml"
+        },
+        {
+            "name": "view/ChangeInsuranceCov.fragment.xml"
+        },
+        {
+            "name": "index.html"
+        },
+        {
+            "name": "control/ShowHideContainer.js"
+        },
+        {
+            "name": ".project.json"
+        },
+        {
+            "name": "controller/PopUpHelper.js"
+        },
+        {
+            "name": "controller/EntryView.controller.js"
+        },
+        {
+            "name": "controller/GenericFunctionsHelper.js"
+        },
+        {
+            "name": "controller/GetDataHelper.js"
+        },
+        {
+            "name": "controller/PremiumsDeltaCalculationHelper.js"
+        },
+        {
+            "name": "controller/BusinessLogicHelper.js"
+        },
+        {
+            "name": "controller/BusinessRulesHelper.js"
+        },
+        {
+            "name": "neo-app.json"
+        },
+        {
+            "name": "images/logo.jpg"
+        }
+    ]
+}
